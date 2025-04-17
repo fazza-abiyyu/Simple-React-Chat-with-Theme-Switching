@@ -1,0 +1,97 @@
+/* Light Theme */
+.light {
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Dark Theme */
+  .dark {
+    background-color: #333;
+    color: #f4f4f9;
+  }
+  
+  /* Chat container styling */
+  .chat-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Header styling */
+  header {
+    margin-bottom: 20px;
+  }
+  
+  .theme-buttons button {
+    margin: 5px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .theme-buttons button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  /* Chat box styling */
+  .chat-box {
+    margin-top: 20px;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  
+  input {
+    padding: 10px;
+    flex: 1;
+    max-width: 300px;
+    border-radius: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .response {
+    margin-top: 20px;
+    font-size: 1.1em;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .chat-container {
+      width: 100%;
+      padding: 15px;
+    }
+  
+    input {
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  
+    form {
+      flex-direction: column;
+    }
+  }
+  

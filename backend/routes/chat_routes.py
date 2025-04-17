@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify, current_app
 from flask_jwt_extended import jwt_required
 import requests
+import re
 
 # === Konfigurasi API Gemini ===
 API_KEY = 'AIzaSyBKAsNdsA9PLCQYwerlPzZKEpgwRyLNUyw'
@@ -47,6 +48,38 @@ def get_agent_description():
         "Saya beranama Zuha adalah sebuah agen virtual yang dapat membantu Anda dengan berbagai kebutuhan."
     )
 
+def detect_theme_intent(message):
+    message = message.lower()
+
+    # Pola umum untuk perubahan tema terang
+    patterns_light = [
+        r'\b(mode|tema|tampilan)\s+(terang|light)\b',
+        r'\bganti\s+(ke\s+)?(terang|light)\b',
+        r'\b(terang|light)\b.*(dong|ya|pls|tolong)?',
+        r'\baktifkan\s+(mode\s+)?terang\b',
+        r'\bsuka\s+(tema\s+)?terang\b',
+    ]
+
+    # Pola umum untuk perubahan tema gelap
+    patterns_dark = [
+        r'\b(mode|tema|tampilan)\s+(gelap|dark)\b',
+        r'\bganti\s+(ke\s+)?(gelap|dark)\b',
+        r'\b(gelap|dark)\b.*(dong|ya|pls|tolong)?',
+        r'\baktifkan\s+(mode\s+)?gelap\b',
+        r'\bsuka\s+(tema\s+)?gelap\b',
+    ]
+
+    for pattern in patterns_light:
+        if re.search(pattern, message):
+            return 'light'
+
+    for pattern in patterns_dark:
+        if re.search(pattern, message):
+            return 'dark'
+
+    return None
+
+
 # === Endpoint untuk mengakses AI Chat ===
 @chat_bp.route('/chat', methods=['POST'])
 @jwt_required()
@@ -59,18 +92,19 @@ def chat():
 
     message_lower = message.lower()
 
-    # Jika ini adalah pesan pertama, kirimkan deskripsi agen
-    if "kenalan" in message_lower or "siapa kamu" in message_lower:
+    # Cek jika pesan kenalan
+    if re.search(r'\b(kenalan|siapa\s+kamu)\b', message_lower):
         response = get_agent_description()
-    # Deteksi kata kunci tema
-    elif any(word in message_lower for word in ["terang", "light"]):
-        # Panggil fungsi untuk memperbarui preferensi tema ke terang (light)
-        response = update_user_preference(theme=0)
-    elif any(word in message_lower for word in ["gelap", "dark"]):
-        # Panggil fungsi untuk memperbarui preferensi tema ke gelap (dark)
-        response = update_user_preference(theme=1)
+
+    # Cek intent untuk mengubah tema
     else:
-        response = get_ai_response(message)
+        theme_intent = detect_theme_intent(message_lower)
+        if theme_intent == 'light':
+            response = update_user_preference(theme=0)
+        elif theme_intent == 'dark':
+            response = update_user_preference(theme=1)
+        else:
+            response = get_ai_response(message)
 
     return jsonify({"response": response})
 

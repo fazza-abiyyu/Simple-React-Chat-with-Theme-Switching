@@ -23,14 +23,3 @@ This project is a web-based application with a **Flask backend**, **React fronte
 - **AI API:** Gemini AI
 
 ---
-
-### **Setup Instructions**
-
-Follow these steps to set up both the frontend and backend locally:
-
-#### **Backend Setup (Flask)**
-
-1. **Clone the repository:**
-   ```bash
-   git clone [your-repository-url]
-   cd [project-directory]

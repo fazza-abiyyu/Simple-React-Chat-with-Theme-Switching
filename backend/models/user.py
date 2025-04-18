@@ -7,7 +7,12 @@ class User:
     def __init__(self, username, password, preferences=None):
         self.username = username
         self.password = password
-        self.preferences = preferences or {"theme": 0, "language": "en"}
+        # Default preferences: theme=0 (light), language="en", notifications=True
+        self.preferences = preferences or {
+            "theme": 0,  # 0 = light, 1 = dark
+            "language": "en",  # Default language: English
+            "notifications": True  # Default: notifications enabled
+        }
 
     @classmethod
     def from_mongo(cls, mongo_user):
@@ -23,7 +28,11 @@ class User:
         user = {
             "username": username,
             "password": hashed_password,
-            "preferences": preferences or {"theme": 0, "language": "en"}
+            "preferences": preferences or {
+                "theme": 0,  # Default theme: light
+                "language": "en",  # Default language: English
+                "notifications": True  # Default: notifications enabled
+            }
         }
         mongo.db.users.insert_one(user)
 

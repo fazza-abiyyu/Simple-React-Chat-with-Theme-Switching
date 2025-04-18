@@ -1,0 +1,137 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Container Utama */
+  .login-container {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    text-align: center;
+  }
+  
+  .login-container.dark {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+  }
+  
+  .login-container.dark input,
+  .login-container.dark button {
+    background-color: #333;
+    color: #e0e0e0;
+    border-color: #444;
+  }
+  
+  /* Judul Halaman */
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Form Login */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Label Input */
+  label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  /* Input Field */
+  input[type="text"],
+  input[type="password"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    border-color: #007bff;
+  }
+  
+  /* Tombol Submit */
+  button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Pesan Error */
+  .error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Tombol Register */
+  .register-button {
+    margin-top: 10px;
+    padding: 10px 20px; /* Sama seperti tombol Login */
+    border: none;
+    border-radius: 5px;
+    background-color: #6c757d; /* Warna abu-abu */
+    color: #fff; /* Warna teks putih */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .register-button:hover {
+    background-color: #5a6268; /* Warna abu-abu lebih gelap saat hover */
+  }
+  
+  /* Tema Gelap */
+  .login-container.dark .error-message {
+    color: #ff5252;
+  }
+  
+  .login-container.dark .register-button {
+    background-color: #495057; /* Abu-abu lebih gelap */
+    color: #e0e0e0; /* Warna teks terang */
+  }
+  
+  .login-container.dark .register-button:hover {
+    background-color: #343a40; /* Lebih gelap saat hover */
+  }

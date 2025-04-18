@@ -109,9 +109,14 @@ The backend exposes 4 main endpoints:
    - This endpoint also checks if the user requests a theme change and calls the `POST /preferences` endpoint to update the theme.
 
 4. **`POST /preferences`**  
-   - Updates the user's theme preference to `light` (0) or `dark` (1).
-   - The theme preference is stored in the database and can be accessed during chat interactions.
+   Updates the user's preferences, including:
 
+   - theme: theme mode (0 = light, 1 = dark)
+
+   - language: preferred language (e.g., "en", "id")
+
+   - notifications: notification status (true or false)
+   The preferences are stored in the database and are accessible during chat interactions.
 ---
 
 ### **How to Test the Preferences Feature**

@@ -108,18 +108,18 @@
   /* Tombol Register */
   .register-button {
     margin-top: 10px;
-    padding: 10px 20px; /* Sama seperti tombol Login */
+    padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #6c757d; /* Warna abu-abu */
-    color: #fff; /* Warna teks putih */
+    background-color: #6c757d;
+    color: #fff;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .register-button:hover {
-    background-color: #5a6268; /* Warna abu-abu lebih gelap saat hover */
+    background-color: #5a6268;
   }
   
   /* Tema Gelap */
@@ -128,10 +128,10 @@
   }
   
   .login-container.dark .register-button {
-    background-color: #495057; /* Abu-abu lebih gelap */
-    color: #e0e0e0; /* Warna teks terang */
+    background-color: #495057;
+    color: #e0e0e0;
   }
   
   .login-container.dark .register-button:hover {
-    background-color: #343a40; /* Lebih gelap saat hover */
+    background-color: #343a40;
   }

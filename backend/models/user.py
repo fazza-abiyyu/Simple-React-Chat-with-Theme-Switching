@@ -9,9 +9,9 @@ class User:
         self.password = password
         # Default preferences: theme=0 (light), language="en", notifications=True
         self.preferences = preferences or {
-            "theme": 0,  # 0 = light, 1 = dark
-            "language": "en",  # Default language: English
-            "notifications": True  # Default: notifications enabled
+            "theme": 0,
+            "language": "en",
+            "notifications": True
         }
 
     @classmethod
@@ -29,9 +29,9 @@ class User:
             "username": username,
             "password": hashed_password,
             "preferences": preferences or {
-                "theme": 0,  # Default theme: light
-                "language": "en",  # Default language: English
-                "notifications": True  # Default: notifications enabled
+                "theme": 0,
+                "language": "en",
+                "notifications": True
             }
         }
         mongo.db.users.insert_one(user)

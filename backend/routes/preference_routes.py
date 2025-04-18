@@ -4,6 +4,7 @@ from models.user import User
 
 preference_bp = Blueprint('preferences', __name__)
 
+# === Endpoint untuk Mendapatkan preferesnsi ===
 @preference_bp.route('/preferences', methods=['GET'])
 @jwt_required()
 def get_preferences():
@@ -20,10 +21,11 @@ def get_preferences():
         "preferences": user.preferences
     }), 200
 
+# === Endpoint untuk Memperbarui preferesnsi ===
 @preference_bp.route('/preferences', methods=['PUT'])
 @jwt_required()
 def update_preferences():
-    current_user = get_jwt_identity()  # Ambil username dari JWT token
+    current_user = get_jwt_identity()
     data = request.get_json()
 
     # Validasi input

@@ -5,6 +5,7 @@ from models.user import User
 
 auth_bp = Blueprint('auth', __name__)
 
+# === Endpoint untuk Login ===
 @auth_bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -17,11 +18,12 @@ def login():
         # Membuat response dan mengirimkan token dalam body response
         return jsonify({
             "msg": "Login successful",
-            "access_token": access_token  # Mengirimkan access token
+            "access_token": access_token
         }), 200
 
     return jsonify({"msg": "Invalid credentials"}), 401
 
+# === Endpoint untuk Register ===
 @auth_bp.route('/register', methods=['POST'])
 def register():
     data = request.get_json()

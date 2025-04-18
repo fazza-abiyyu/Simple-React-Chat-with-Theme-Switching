@@ -22,9 +22,7 @@ const Chat = () => {
   // Token dari localStorage
   const token = localStorage.getItem("access_token");
 
-  /**
-   * Fungsi untuk menampilkan pop-up notifikasi
-   */
+  //Fungsi untuk menampilkan pop-up notifikasi
   const showPopup = (message) => {
     setNotificationMessage(message);
     setShowNotification(true);
@@ -35,9 +33,7 @@ const Chat = () => {
     }, 3000);
   };
 
-  /**
-   * Ambil preferensi pengguna dari database saat komponen dimuat
-   */
+  // Ambil preferensi pengguna dari database saat komponen dimuat
   useEffect(() => {
     if (token) {
       axios
@@ -53,22 +49,18 @@ const Chat = () => {
 
           setTheme(preferences.theme === 1 ? "dark" : "light");
           setLanguage(preferences.language || "en");
-          setNotification(initialNotification); // Set notification dengan nilai valid
-          setPrevNotification(initialNotification); // Inisialisasi prevNotification
-          console.log("Initial notification:", initialNotification); // Debugging
+          setNotification(initialNotification);
+          setPrevNotification(initialNotification);
+          console.log("Initial notification:", initialNotification);
         })
         .catch((err) => console.error("Failed to fetch preferences:", err));
     }
   }, [token]);
 
-  /**
-   * Fungsi untuk menangani perubahan input
-   */
+  // Fungsi untuk menangani perubahan input
   const handleMessageChange = (e) => setMessage(e.target.value);
 
-  /**
-   * Fungsi untuk menangani submit pesan
-   */
+  // Fungsi untuk menangani submit pesan
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -105,7 +97,7 @@ const Chat = () => {
       // Update notification jika ada
       if (res.data.notifications !== undefined) {
         // Validasi nilai notifications
-        const newNotification = res.data.notifications ?? true; // Gunakan true sebagai default jika null
+        const newNotification = res.data.notifications ?? true;
 
         // Update state notification
         setNotification(newNotification);
@@ -115,7 +107,7 @@ const Chat = () => {
           const message = newNotification
             ? "Notifications are now enabled."
             : "Notifications are now disabled.";
-          showPopup(message); // Tampilkan pop-up notifikasi
+          showPopup(message);
         }
 
         // Update nilai sebelumnya
@@ -123,9 +115,9 @@ const Chat = () => {
       }
 
       // Update respons AI
-      const formattedResponse = marked(res.data.response); // Konversi Markdown ke HTML
+      const formattedResponse = marked(res.data.response);
       setResponse(formattedResponse);
-      setMessage(""); // Kosongkan input
+      setMessage("");
     } catch (error) {
       console.error("Error chatting:", error);
       setResponse("There was an error with your message.");

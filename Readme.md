@@ -135,6 +135,10 @@ The backend exposes 4 main endpoints:
    - In the chat, issue commands like:
      - `"light"` or `"terang"` to set the theme to light (0).
      - `"dark"` or `"gelap"` to set the theme to dark (1).
+     - `"id"` or `"indonesia"` to set the lang to id.
+     - `"en"` or `"english"` to set the lang to en.
+     - `"nyalakan notifikasi"` or `"enable notification"` to set the notification enable (true).
+     - `"matikan notifikasi"` or `"disable notification"` to set the notification enable (true).
    - When a theme change is requested, the backend will call the `POST /preferences` endpoint to update the theme in the database.
 
 4. **Reload the Page:**
@@ -147,6 +151,10 @@ The backend exposes 4 main endpoints:
 - **JWT Authentication:** The authentication system uses JWT for user login and subsequent API requests. The token is used as a Bearer token in the Authorization header.
   
 - **Theme Change Logic:** The chatbot listens for keywords like `"light"`, `"terang"`, `"dark"`, and `"gelap"` to trigger the theme change. This is a simple approach to ensure functionality within the project’s scope and time constraints.
+
+- **Language Change Logic:** The chatbot detects language preference changes through keywords like `"en"`, `"id"`, `"indonesia"`, `"english"` etc. This allows basic multilingual support without complex NLP processing.
+
+- **Notification Toggle Logic:** Notification preferences are managed using simple commands such as "enable notifications", "disable notifications", "nyalakan notifikasi", or "notifikasi mati", ensuring ease of use and quick response.
 
 - **Simplified Chatbot Interface:** Due to time limitations and the newness of integrating with the frontend, the chatbot interface is kept simple. It only handles text input and theme preference changes, without advanced interactions or error handling for edge cases.
 

@@ -41,6 +41,11 @@ const Login = ({ onLoginSuccess }) => {
     }
   };
 
+  // Arahkan ke halaman register
+  const handleRegister = () => {
+    navigate("/register");
+  };
+
   return (
     <div>
       <h2>Login</h2>
@@ -68,6 +73,10 @@ const Login = ({ onLoginSuccess }) => {
         <button type="submit">Login</button>
       </form>
       {error && <p style={{ color: "red" }}>{error}</p>}
+
+      <button onClick={handleRegister} style={{ marginTop: "10px" }}>
+        Register
+      </button>
     </div>
   );
 };

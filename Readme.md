@@ -12,7 +12,7 @@ This project is a web-based application with a **Flask backend**, **React fronte
    The backend is built with Flask, handling user authentication (JWT-based), chat interactions (via Gemini AI), and managing user preferences.
 
 3. **Database (MongoDB):**  
-   MongoDB is used to store user information and preferences (light or dark theme).
+   MongoDB is used to store user information and preferences.
 
 4. **Gemini AI API:**  
    The chatbot's AI functionality is powered by the Gemini AI API, which processes user inputs and responds with relevant data.
